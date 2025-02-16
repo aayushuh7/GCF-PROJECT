@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spezia Bistro</title>
+  <link rel="icon" type="image/x-icon" href="https://example.com/favicon.ico"> <!-- Add your favicon link here -->
+  <style>
+    /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #e46060;
+      scroll-behavior: smooth; /* Smooth scrolling */
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    .header {
+      background: #333;
+      color: #f40b0b;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      text-shadow: #e46060;
+    }
+
+    .header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header .logo {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: 500;
+    }
+
+    .navbar a:hover {
+      color: #f4a261;
+    }
+
+    /* Hero Section with Parallax Effect */
+    .hero {
+      position: relative;
+      background: url('https://i.etsystatic.com/38955494/r/il/adb99a/4517146409/il_1080xN.4517146409_ry5e.jpg') no-repeat center center/cover;
+      color: #fff;
+      text-align: center;
+      padding: 150px 20px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5); /* Overlay for better readability */
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    .hero .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #f4a261;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: background 0.3s ease;
+      animation: fadeIn 4s ease-in-out;
+    }
+
+    .hero .btn:hover {
+      background: #e76f51;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Menu Section */
+    .menu {
+      padding: 50px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #f9f9f9, #e0e0e0);
+    }
+
+    .menu h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .menu .menu-items {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .menu .item {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 300px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .menu .item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .menu .item img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .menu .item h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .menu .item p {
+      margin-bottom: 10px;
+      color: #666;
+    }
+
+    .menu .item span {
+      font-weight: 600;
+      color: #f4a261;
+      font-size: 1.2rem;
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+      padding: 50px 20px;
+      background: #fff;
+      text-align: center;
+    }
+
+    .testimonials h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .testimonials .testimonial-items {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .testimonials .item {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 300px;
+    }
+
+    .testimonials .item img {
+      width: 100px;
+      height: 100px;
+      border-radius:50%;
+      margin-bottom: 7px;
+    }
+
+    .testimonials .item p {
+      font-style: italic;
+      color: #555;
+    }
+
+    .testimonials .item h4 {
+      margin-top: 10px;
+      color: #333;
+    }
+
+    /* About Section */
+    .about {
+      padding: 50px 20px;
+      background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
+      text-align: center;
+    }
+
+    .about h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .about p {
+      max-width: 600px;
+      margin: 0 auto;
+      color: #191515;
+    }
+
+    /* Contact Section */
+    .contact {
+      padding: 50px 20px;
+      text-align: center;
+      background: #f5f2f2;
+    }
+
+    .contact h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .contact p {
+      color: #555;
+    }
+
+    /* Footer */
+    .footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .footer .social-links {
+      margin-top: 10px;
+    }
+
+    .footer .social-links a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    .footer .social-links a:hover {
+      color: #f4a261;
+    }
+
+    /* Back to Top Button */
+    #back-to-top {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 15px;
+      background: #f4a261;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    #back-to-top:hover {
+      background: #e76f51;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header .container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .navbar {
+        margin-top: 10px;
+      }
+
+      .hero {
+        padding: 100px 20px;
+      }
+
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+      }
+
+      .menu .menu-items,
+      .testimonials .testimonial-items {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .menu .item,
+      .testimonials .item {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">SPEZIA BISTRO</h1>
+      <nav class="navbar">
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <h2>Welcome to Spezia Bistro</h2>
+      <p>Your perfect coffee experience awaits.</p>
+      <a href="#menu" class="btn">Explore Menu</a>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section id="menu" class="menu">
+    <div class="container">
+      <h2>Our Menu</h2>
+      <div class="menu-items">
+        <div class="item">
+          <img src="https://www.sharmispassions.com/wp-content/uploads/2012/07/espresso-coffee-recipe022.jpg" alt="Espresso">
+          <h3>Espresso</h3>
+          <p>Rich and Bold Coffee Shot.</p>
+          <span>$3.50</span>
+        </div>
+        <div class="item">
+          <img src="https://media.istockphoto.com/id/649091120/photo/ice-cappuccino-and-macaroons.jpg?s=170667a&w=0&k=20&c=DzjBuGCmXM7yly3EhkUBgcoE4Jaci877xa-r9YSj97k=" alt="Cappuccino">
+          <h3>Cappuccino</h3>
+          <p>Creamy Coffee with Steamed Milk Foam.</p>
+          <span>$4.00</span>
+        </div>
+        <div class="item">
+          <img src="https://www.halfbakedharvest.com/wp-content/uploads/2021/12/Vanilla-Gingerbread-Latte-1.jpg" alt="Latte">
+          <h3>Latte</h3>
+          <p>Smooth Coffee with Milk.</p>
+          <span>$4.50</span>
+        </div>
+        <div class="item">
+            <img src="https://www.mommyhatescooking.com/wp-content/uploads/2021/09/Iced-mocha-21-scaled.jpg" alt="Mocha">
+            <h3>Mocha</h3>
+            <p>Mocaccina with Chocolate Variant.</p>
+            <span>$5.50</span>
+          </div>
+          <div class="item">
+            <img src="https://img.freepik.com/premium-photo/iced-americano-coffee-glass-bar-cafe_213396-399.jpg" alt="Americano">
+            <h3>Americano</h3>
+            <p>Decaffeinated coffee .</p>
+            <span>$7.00</span>
+          </div>
+          <div class="item">
+            <img src="https://i.pinimg.com/736x/c4/e1/6e/c4e16e520e16d9921cfa348e79fcab6e.jpg" alt="Chai Sutta">
+            <h3>Chai Sutta</h3>
+            <p>Authentic Chai Experience.</p>
+            <span>$100.00</span>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <div class="container">
+      <h2>What Our Customers Say</h2>
+      <div class="testimonial-items">
+        <div class="item">
+          <img src="https://img.freepik.com/free-photo/man-drinking-coffee-table-with-laptop_23-2147962638.jpg" alt="Customer 1">
+          <p>"The best coffee I've ever had! Highly recommend the cappuccino."</p>
+          <h4>- Joe Biden</h4>
+        </div>
+        <div class="item">
+          <img src="https://freedesignfile.com/upload/2018/08/Business-woman-drinking-coffee-using-laptop-Stock-Photo.jpg" alt="Customer 2">
+          <p>"Amazing ambiance and friendly staff. A must-visit cafe!"</p>
+          <h4>- Jane Smith</h4>
+        </div>
+        <div class="item">
+          <img src="https://img.freepik.com/premium-photo/planning-day-close-up-young-man-smart-casual-wear-drinking-coffee-while-sitting-restaurant-outdoors_425904-13740.jpg" alt="Customer 3">
+          <p>"The latte here is simply divine. Perfect for a relaxing evening."</p>
+          <h4>- Mike Johnson</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+    
+      <h2>About Us</h2>
+      <p>At Spezia Bistro, we pride ourselves on serving the finest coffee made from freshly roasted beans. Our cozy environment is perfect for a quick coffee break or a long conversation with friends.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>Email: info@speziabistro.com</p>
+      <p>Phone: (123) 836-7890</p>
+      <p>Address: 123 Metro ST, New Delhi</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Spezia Bistro. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#" target="_blank">Facebook</a>
+        <a href="#" target="_blank">Instagram</a>
+        <a href="#" target="_blank">Twitter</a>
+      </div>
+    </div>
+  </footer>
